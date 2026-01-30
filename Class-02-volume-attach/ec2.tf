@@ -3,6 +3,8 @@ resource "aws_instance" "webserver01" {
   instance_type = "t3.micro"
   key_name = "skoda-keypair"
   security_groups = ["skoda-sg"]
+  availability_zone = "us-west-2b"
+
   tags = {
     Name = "Web Skoda"
     Env = "dev"
