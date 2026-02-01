@@ -22,7 +22,8 @@ resource "aws_subnet" "pubsub2" {
   availability_zone       = "us-west-2b"
   map_public_ip_on_launch = true
   tags = {
-  Name = var.pubsub2 }
+    Name = var.pubsub2
+  }
 
 }
 
@@ -54,14 +55,14 @@ resource "aws_route_table" "terra_route" {
   }
 }
 
-resource "aws_route_table_association" "terraassosciate1" {
+resource "aws_route_table_association" "associate1" {
 
   route_table_id = aws_route_table.terra_route.id
-  subnet_id      = aws_subnet.pubsub1
+  subnet_id      = aws_subnet.pubsub1.id
 }
 
-resource "aws_route_table_association" "terraassosciate2" {
+resource "aws_route_table_association" "associate2" {
 
   route_table_id = aws_route_table.terra_route.id
-  subnet_id      = aws_subnet.pubsub2
+  subnet_id      = aws_subnet.pubsub2.id
 }
