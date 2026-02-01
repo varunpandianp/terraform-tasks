@@ -3,7 +3,7 @@ resource "aws_instance" "webserver01" {
   instance_type     = var.instancetype
   key_name          = "skoda-keypair"
   security_groups   = ["skoda-sg"]
-  availability_zone = "us-west-2b"
+  availability_zone = "us-west-2a"
 
   tags = {
     Name = var.tag
