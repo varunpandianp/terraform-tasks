@@ -1,5 +1,5 @@
 resource "aws_instance" "webserver01" {
-  ami               =  var.ami
+  ami               = var.ami
   instance_type     = var.instancetype
   key_name          = "skoda-keypair"
   security_groups   = ["skoda-sg"]
