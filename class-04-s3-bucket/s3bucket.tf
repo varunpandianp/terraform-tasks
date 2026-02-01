@@ -1,8 +1,15 @@
+resource "random_id" "suffix" {
+  byte_length = 4
+}
+
+
 resource "aws_s3_bucket" "example" {
-  bucket = "my-tf-test-bucket"
+
+
+  bucket = "my-tf-example-${random_id.suffix.hex}"
 
   tags = {
-    Name        = "My bucket"
+    Name        = "bucket 01 terraform task"
     Environment = "Dev"
   }
 }
@@ -24,10 +31,10 @@ resource "aws_s3_bucket_lifecycle_configuration" "example" {
     #apply rule to all object
     filter {}
 
-    #move object to standared=IA after 30 days
+    #move object to standard=IA after 30 days
     transition {
       days          = 30
-      storage_class = "STANDARED_IA"
+      storage_class = "STANDARD_IA"
     }
     #move object to glacier after 90 days
     transition {
