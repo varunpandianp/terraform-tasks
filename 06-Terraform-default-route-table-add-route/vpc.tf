@@ -1,4 +1,4 @@
-resource "aws_vpc" "terravpc-default-route" {
+resource "aws_vpc" "terravpc_default_route" {
   cidr_block = var.block1
   tags = {
     Name = var.vpcname
@@ -6,7 +6,7 @@ resource "aws_vpc" "terravpc-default-route" {
 }
 
 resource "aws_subnet" "pubsub1" {
-  vpc_id                  = aws_vpc.terravpc-default-route.id
+  vpc_id                  = aws_vpc.terravpc_default_route.id
   cidr_block              = var.block2
   availability_zone       = "us-west-2a"
   map_public_ip_on_launch = true
@@ -17,7 +17,7 @@ resource "aws_subnet" "pubsub1" {
 }
 
 resource "aws_subnet" "pubsub2" {
-  vpc_id                  = aws_vpc.terravpc-default-route.id
+  vpc_id                  = aws_vpc.terravpc_default_route.id
   cidr_block              = var.block3
   availability_zone       = "us-west-2b"
   map_public_ip_on_launch = true
@@ -28,7 +28,7 @@ resource "aws_subnet" "pubsub2" {
 }
 
 resource "aws_subnet" "privatesub1" {
-  vpc_id            = aws_vpc.terravpc-default-route.id
+  vpc_id            = aws_vpc.terravpc_default_route.id
   cidr_block        = var.block4
   availability_zone = "us-west-2a"
   tags = {
@@ -38,14 +38,14 @@ resource "aws_subnet" "privatesub1" {
 }
 
 resource "aws_internet_gateway" "terra_igw" {
-  vpc_id = aws_vpc.terravpc-default-route.id
+  vpc_id = aws_vpc.terravpc_default_route.id
   tags = {
     Name = "Terra_vpc_IGW"
   }
 }
 
 resource "aws_default_route_table" "default_route_table" {
-  default_route_table_id = aws_vpc.terravpc-default-route.default_route_table_id
+  default_route_table_id = aws_vpc.terravpc_default_route.default_route_table_id
 
   route {
     cidr_block = var.block5
@@ -66,18 +66,18 @@ resource "aws_default_route_table" "default_route_table" {
 //  Name = "Terra-routetable"
 //}
 //}
-/*
+
 resource "aws_route_table_association" "associate1" {
 
-  route_table_id = default_route_table_id
+  route_table_id = aws_default_route_table.default_route_table.default_route_table_id
   subnet_id      = aws_subnet.pubsub1.id
 }
 
 resource "aws_route_table_association" "associate2" {
 
-  route_table_id = default_route_table_id
+  route_table_id = aws_default_route_table.default_route_table.default_route_table_id
   subnet_id      = aws_subnet.pubsub2.id
 }
 
- */
+
 
