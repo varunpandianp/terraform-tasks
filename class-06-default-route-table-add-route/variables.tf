@@ -30,7 +30,7 @@ variable "block5" {
 
 
 variable "vpcname" {
-  default = "terravpc"
+  default = "terravpc-default-route"
 }
 
 variable "pubsub1" {
