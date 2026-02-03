@@ -9,11 +9,12 @@ data "aws_ami" "ami-test1" {
 
 resource "aws_instance" "instance_from_data_block" {
   ami           = data.aws_ami.ami-test1.id
+  count = 3
   instance_type = var.machinetype
   key_name      = "skoda-keypair"
 
   tags = {
-    Name = "HelloWorld"
+    Name = "${var.InstanceName}-${count.index + 1}"
   }
 }
 

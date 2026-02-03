@@ -6,3 +6,6 @@ variable "machinetype" {
   default = "t2.micro"
 }
 
+variable "InstanceName" {
+  default = "Datablocks-server"
+}
