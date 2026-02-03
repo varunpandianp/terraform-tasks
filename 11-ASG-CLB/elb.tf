@@ -1,7 +1,7 @@
 # Create a new load balancer
 resource "aws_elb" "terra-elb" {
-  name               = "terra-elb"
-  subnets = aws_subnet.public.*.id
+  name            = "terra-elb"
+  subnets         = aws_subnet.public.*.id
   security_groups = [aws_security_group.webservers.id]
 
   listener {

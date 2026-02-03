@@ -7,12 +7,12 @@ variable "vpc_cidr" {
 }
 
 variable "subnets_cidr" {
-  type = list
+  type    = list(any)
   default = ["10.20.1.0/24", "10.20.2.0/24"]
 }
 
 variable "azs" {
-  type = list
+  type    = list(any)
   default = ["us-west-2a", "us-west-2b"]
 }
 

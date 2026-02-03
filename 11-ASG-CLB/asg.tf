@@ -6,7 +6,7 @@ resource "aws_autoscaling_group" "web_asg" {
   vpc_zone_identifier = aws_subnet.public.*.id
 
   launch_template {
-    name    = "lt-0c5dd0c01bf2240e5"
+    id      = aws_launch_template.web_lt.id
     version = "$Latest"
   }
 
