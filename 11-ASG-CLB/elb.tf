@@ -19,7 +19,7 @@ resource "aws_elb" "terra-elb" {
     interval            = 30
   }
 
-  instances                   = [aws_instance.webservers[0].id, aws_instance.webservers[1].id]
+  //instances                   = [aws_instance.webservers[0].id, aws_instance.webservers[1].id]
   cross_zone_load_balancing   = true
   idle_timeout                = 100
   connection_draining         = true
